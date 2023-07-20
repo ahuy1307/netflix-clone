@@ -14,8 +14,8 @@ import toast from "react-hot-toast";
 
 const Login = () => {
 	const [showPass, setShowPass] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 	const router = useRouter();
-	const session = useSession();
 
 	const [form, setForm] = useState({
 		email: "",
@@ -35,15 +35,16 @@ const Login = () => {
 
 	const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
 		e.preventDefault();
-
+		setIsLoading(true);
 		const res = await signIn("credentials", {
 			...form,
 			redirect: false,
 		});
-
 		res?.error && toast.error(res.error);
-		return router.push("/");
+		setIsLoading(false);
+		if (!res?.error) return router.push("/");
 	};
+
 	return (
 		<div className="overflow-hidden h-[100vh] relative bg-black md:bg-transparent">
 			<div className="relative md:h-full overflow-hidden top-0 left-0 w-full bg-black md:bg-transparent">
@@ -55,9 +56,10 @@ const Login = () => {
 			</div>
 			<form onSubmit={handleSubmit} className="text-white p-6 md:absolute top-[50%] left-[50%] md:-translate-y-[50%] md:-translate-x-[50%] md:bg-[#000000bf] md:p-14 rounded-xl">
 				<h2 className="font-bold text-5xl mb-12">Login</h2>
-				<Input type="email" className="mb-6 text-xl bg-[#333333] outline-none border-none rounded-lg" name="email" onChange={(e) => changeForm(e)} required />
+				<Input disabled={isLoading} type="email" className="mb-6 text-xl bg-[#333333] outline-none border-none rounded-lg" name="email" onChange={(e) => changeForm(e)} required />
 				<div className="relative">
 					<Input
+						disabled={isLoading}
 						name="password"
 						type={showPass ? "text" : "password"}
 						className="text-xl bg-[#333333] outline-none border-none rounded-lg"
@@ -71,7 +73,7 @@ const Login = () => {
 						<AiOutlineEyeInvisible className="absolute right-4 top-[50%] w-6 h-8 -translate-y-[50%]" onClick={toggleShowPass} color="red" />
 					)}
 				</div>
-				<Button type="submit" className="w-full mt-10 py-4 text-xl">
+				<Button disabled={isLoading} type="submit" className="w-full mt-10 py-4 text-xl">
 					Login
 				</Button>
 				<div className="flex justify-center gap-x-8 mt-8 md:mt-10">

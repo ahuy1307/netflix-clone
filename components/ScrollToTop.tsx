@@ -26,7 +26,7 @@ function ScrollToTop() {
 	return (
 		<div>
 			{scrollPosition > 300 && (
-				<div onClick={scrollToTop} className="fixed bottom-4 right-4 bg-[#E50915] rounded-2xl p-3 z-50">
+				<div onClick={scrollToTop} className="fixed bottom-4 right-4 bg-[#E50915] rounded-2xl p-3 z-50 cursor-pointer">
 					<FaArrowUp className="w-6 h-6" color="#fff" />
 				</div>
 			)}

@@ -30,32 +30,36 @@ function Navbar() {
 			<div className="flex items-center gap-x-6">
 				<Logo />
 				<div className="lg:flex hidden gap-x-6 text-xl ml-3">
-					<NavbarItem label="Home" active />
+					<Link href="/">
+						<NavbarItem label="Home" active />
+					</Link>
+					<Link href="/movies">
+						<NavbarItem label="Films" />
+					</Link>
 					<NavbarItem label="Series" />
-					<NavbarItem label="Films" />
 					<NavbarItem label="New & Popular" />
 					<NavbarItem label="My List" />
 				</div>
 				<div className="relative lg:hidden">
 					<div className="text-white flex items-center cursor-pointer" onClick={toggleMobileMenu}>
-						<p className="md:text-xl">Browse</p>
+						<p className="md:text-xl text-sm sm:text-xl">Browse</p>
 						<AiFillCaretDown className={`w-6 h-4 md:h-5 text-white fill-white transition ${showMobileMenu ? "rotate-180" : "rotate-0"}`} />
 					</div>
 					{showMobileMenu && <NavbarMenu />}
 				</div>
 			</div>
 			<div className="flex items-center gap-x-3 cursor-pointer md:gap-x-6">
-				<HiMagnifyingGlass className="text-white w-5 h-10 md:w-6" />
-				<IoNotificationsOutline className="text-white w-5 h-10 md:w-6" />
+				<HiMagnifyingGlass className="text-white w-5 h-10 md:w-6 lg:h-12 lg:w-8" />
+				<IoNotificationsOutline className="text-white w-5 h-10 md:w-6 lg:h-12 lg:w-8" />
 				{session.status == "unauthenticated" ? (
 					<Link href="/login">
 						<Button>Login</Button>
 					</Link>
 				) : (
-					<div className="relative w-[40px] h-full flex items-center" onClick={() => toggleProfileMenu()}>
-						<img src="/images/default-blue.png" alt="" className="w-full h-ful" />
+					<div className="relative w-[40px] lg:w-[50px] h-full flex items-center" onClick={() => toggleProfileMenu()}>
+						<img src="/images/default-blue.png" alt="" className="w-full h-full" />
 						<span>
-							<AiFillCaretDown className={`w-6 h-4 md:h-5 text-white fill-white transition ${showProfileMenu ? "rotate-180" : "rotate-0"}`} />
+							<AiFillCaretDown className={`w-6 h-4 md:h-5 lg:h-5 lg:w-10 text-white fill-white transition ${showProfileMenu ? "rotate-180" : "rotate-0"}`} />
 						</span>
 						{showProfileMenu && <ProfileMenu username={session.data?.user?.name!} />}
 					</div>
