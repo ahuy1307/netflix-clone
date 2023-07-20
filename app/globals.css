@@ -2,26 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer components {
+	.video-image {
+		@apply relative overflow-hidden sm:w-[640px] lg:h-[360px] sm:h-[480px] mt-8 sm:mt-0 h-[280px] mb-[48px] w-[366px];
+	}
+}
+.background-logo {
+	background: rgb(0 0 0 / 40%);
+	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -8;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+	/* background-color: black; */
+	scroll-behavior: smooth;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.form-input:not(:placeholder-shown) + .form-label {
+	top: -2px;
+	left: 24px;
+	font-size: 0.75rem;
+	line-height: 1rem;
+}
+
+.form-input:-webkit-autofill ~ .form-label {
+	color: #000;
+	top: -5px;
+}
+
+.show-question {
+	transition: all 0.5s cubic-bezier(0.5, 0, 0.1, 1) 0s;
 }
