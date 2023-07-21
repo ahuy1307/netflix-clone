@@ -16,11 +16,11 @@ function HomeContent() {
 								<p className="text-xl xl:text-2xl">{item.desc}</p>
 							</div>
 							<div className="video-image relative">
-								<Image className="w-full aspect-square m-auto object-cover z-10" src={item.image} alt="" fill />
+								<Image className="w-full aspect-square m-auto object-cover z-10" src={item.image} alt="" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
 								{item.id === 2 && (
 									<div className="absolute bottom-0 bg-black border-[#808080b3] border-2 z-20 p-1 flex w-[90%] sm:w-[70%] xl:w-[55%] xl:py-3 items-center rounded-2xl left-[50%] -translate-x-[50%]">
 										<div className="w-[100px] h-[80px] overflow-hidden z-10 relative">
-											<Image src="/images/boxshot.png" fill alt="" className="object-contain" priority />
+											<Image src="/images/boxshot.png" fill alt="" className="object-contain" priority sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
 										</div>
 										<div className="text-white flex-1">
 											<p className="font-bold">Stranger Things</p>
