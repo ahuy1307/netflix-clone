@@ -5,7 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import prisma from "@/libs/prismadb";
 import * as argon2 from "argon2";
 
-export const handler = NextAuth({
+const handler = NextAuth({
 	providers: [
 		GithubProvider({ clientId: process.env.GITHUB_ID, clientSecret: process.env.GITHUB_SECRET }),
 		GoogleProvider({ clientId: process.env.GOOGLE_ID, clientSecret: process.env.GOOGLE_SECRET }),
