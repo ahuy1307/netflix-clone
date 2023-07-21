@@ -3,14 +3,16 @@ import Button from "./Button";
 import Logo from "./Logo";
 import NavbarItem from "./NavbarItem";
 import NavbarMenu from "./NavbarMenu";
-import { AiFillCaretDown } from "react-icons/ai";
-import { HiMagnifyingGlass } from "react-icons/hi2";
-import { IoNotificationsOutline } from "react-icons/io5";
+import ProfileMenu from "./ProfileMenu";
 
 import { useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import ProfileMenu from "./ProfileMenu";
+import { AiFillCaretDown } from "react-icons/ai";
+import { HiMagnifyingGlass } from "react-icons/hi2";
+import { IoNotificationsOutline } from "react-icons/io5";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css"; // optional
 
 function Navbar() {
 	const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -36,9 +38,11 @@ function Navbar() {
 					<Link href="/movies">
 						<NavbarItem label="Films" />
 					</Link>
+					<Link href="/favorites">
+						<NavbarItem label="Favorites" />
+					</Link>
 					<NavbarItem label="Series" />
 					<NavbarItem label="New & Popular" />
-					<NavbarItem label="My List" />
 				</div>
 				<div className="relative lg:hidden">
 					<div className="text-white flex items-center cursor-pointer" onClick={toggleMobileMenu}>
@@ -48,9 +52,17 @@ function Navbar() {
 					{showMobileMenu && <NavbarMenu />}
 				</div>
 			</div>
-			<div className="flex items-center gap-x-3 cursor-pointer md:gap-x-6">
-				<HiMagnifyingGlass className="text-white w-5 h-10 md:w-6 lg:h-12 lg:w-8" />
-				<IoNotificationsOutline className="text-white w-5 h-10 md:w-6 lg:h-12 lg:w-8" />
+			<div className="flex items-center gap-x-4 cursor-pointer md:gap-x-6">
+				<Tippy content={<span>Search</span>} delay={[200, 200]}>
+					<button>
+						<HiMagnifyingGlass className="text-white w-5 h-10 md:w-6 lg:h-12 lg:w-8" />
+					</button>
+				</Tippy>
+				<Tippy content={<span>Notifications</span>} delay={[200, 200]}>
+					<button>
+						<IoNotificationsOutline className="text-white w-5 h-10 md:w-6 lg:h-12 lg:w-8" />
+					</button>
+				</Tippy>
 				{session.status == "unauthenticated" ? (
 					<Link href="/login">
 						<Button>Login</Button>

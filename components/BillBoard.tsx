@@ -1,9 +1,8 @@
 "use client";
-import Navbar from "@/components/Navbar";
-import fetcher from "@/libs/fetcher";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useBillboard } from "@/hook/useBillboard";
 import ClipLoader from "react-spinners/ClipLoader";
+import PlayButton from "./PlayButton";
 
 function BillBoard() {
 	const { data, isLoading } = useBillboard();
@@ -36,7 +35,10 @@ function BillBoard() {
 								<p className="text-white text-xs sm:text-2xl md:text-5xl h-full lg:text-6xl font-bold drop-shadow-xl">{data?.title}</p>
 								<p className="text-white text-[10px] md:text-lg sm:text-[18px] mt-3 md:mt-8 w-[90%] md:w-[80%] lg:w-[50%] drop-shadow-xl lg:text-2xl">{data?.description}</p>
 								<div className="flex flex-row items-center mt-3 sm:mt-4 md:mt-4 gap-3">
-									<button className="bg-white text-white bg-opacity-30 rounded-md sm:text-xl py-1 md:py-2 px-2 md:px-4 w-auto text-xs font-semibold flex flex-row items-center hover:bg-opacity-20 transition lg:text-2xl">
+									<PlayButton id={data?.id} />
+									<button
+										className="bg-white text-white bg-opacity-30 rounded-md sm:text-xl py-1 md:py-2 px-2 md:px-4 w-auto text-xs font-semibold flex flex-row items-center hover:bg-opacity-20
+									hover:bg-white hover: transition lg:text-2xl">
 										<AiOutlineInfoCircle className="w-4 md:w-7 mr-1 sm:w-8" />
 										More Info
 									</button>

@@ -6,19 +6,25 @@ import { useFavorites } from "@/hook/useFavorites";
 import { useMovieList } from "@/hook/useMovieList";
 import { useSession } from "next-auth/react";
 
-function Movies() {
+function Favorites() {
 	const session = useSession();
-	const { data: movieList, isLoading } = useMovieList();
-	const { data: favoriteMovies } = useFavorites(session.data?.user?.email!);
+	const { data, isLoading } = useFavorites(session.data?.user?.email!);
+
 	return (
 		<div className="relative">
 			<div className="absolute z-10 w-full px-[32px] md:px-16 ">
 				<Navbar />
 			</div>
 			<BillBoard />
-			{!isLoading && <MovieList title="Trending Now" data={movieList} />}
+			{!isLoading && (
+				<>
+					<div className="mb-16">
+						<MovieList title="Favorite Movie" data={data} />
+					</div>
+				</>
+			)}
 		</div>
 	);
 }
 
-export default Movies;
+export default Favorites;

@@ -9,9 +9,11 @@ function NavbarMenu() {
 			<Link href="/movies">
 				<li className="py-4 px-8 w-max m-auto hover:underline">Films</li>
 			</Link>
+			<Link href="/favorites">
+				<li className="py-4 px-8 w-max m-auto hover:underline">Favorites</li>
+			</Link>
 			<li className="py-4 px-8 w-max  m-auto hover:underline">Series</li>
 			<li className="py-4 px-8 w-max m-auto hover:underline">New & Popular</li>
-			<li className="py-4 px-8 w-max m-auto hover:underline">My List</li>
 		</ul>
 	);
 }
