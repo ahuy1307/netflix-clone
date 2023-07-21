@@ -5,10 +5,9 @@ import HomeQuestion from "@/components/HomeQuestion";
 import Input from "@/components/Input";
 import Navbar from "@/components/Navbar";
 import ScrollToTop from "@/components/ScrollToTop";
-import { useSession } from "next-auth/react";
 import Image from "next/image";
-import Link from "next/link";
 import { AiOutlineRight } from "react-icons/ai";
+
 export default function Home() {
 	return (
 		<>
