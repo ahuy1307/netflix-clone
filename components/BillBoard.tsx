@@ -3,9 +3,12 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useBillboard } from "@/hook/useBillboard";
 import ClipLoader from "react-spinners/ClipLoader";
 import PlayButton from "./PlayButton";
+import { useInfoModal } from "@/hook/useInfoModal";
+import ModalProvider from "@/context/ModalProvider";
 
 function BillBoard() {
 	const { data, isLoading } = useBillboard();
+	const { isOpen, onOpen, onClose } = useInfoModal();
 
 	return (
 		<>
@@ -30,7 +33,7 @@ function BillBoard() {
 				<>
 					<div className="relative h-[56.25vw]">
 						<video poster={data?.thumbnailUrl} className="w-full h-[56.25vw] object-cover brightness-[60%] transition duration-500" autoPlay muted loop src={data?.videoUrl}></video>
-						<div className="absolute top-[35%] md:top-[40%] px-[32px] md:px-16 lg:w-full lg:m-auto lg:top-[30%]">
+						<div className="absolute top-[35%] md:top-[35%] px-[32px] md:px-16 lg:w-full lg:m-auto lg:top-[30%]">
 							<div className="flex pt-[24px] max-w-[1200px] m-auto flex-col lg:gap-y-4">
 								<p className="text-white text-xs sm:text-2xl md:text-5xl h-full lg:text-6xl font-bold drop-shadow-xl">{data?.title}</p>
 								<p className="text-white text-[10px] md:text-lg sm:text-[18px] mt-3 md:mt-8 w-[90%] md:w-[80%] lg:w-[50%] drop-shadow-xl lg:text-2xl">{data?.description}</p>
@@ -38,7 +41,14 @@ function BillBoard() {
 									<PlayButton id={data?.id} />
 									<button
 										className="bg-white text-white bg-opacity-30 rounded-md sm:text-xl py-1 md:py-2 px-2 md:px-4 w-auto text-xs font-semibold flex flex-row items-center hover:bg-opacity-20
-									hover:bg-white hover: transition lg:text-2xl">
+									hover:bg-white hover: transition lg:text-2xl cursor-pointer"
+										onClick={() => {
+											if (!isOpen) {
+												onOpen();
+											} else {
+												onClose();
+											}
+										}}>
 										<AiOutlineInfoCircle className="w-4 md:w-7 mr-1 sm:w-8" />
 										More Info
 									</button>
@@ -46,6 +56,7 @@ function BillBoard() {
 							</div>
 						</div>
 					</div>
+					<ModalProvider data={data} />
 				</>
 			)}
 		</>

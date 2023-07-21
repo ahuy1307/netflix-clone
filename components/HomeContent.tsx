@@ -20,7 +20,7 @@ function HomeContent() {
 								{item.id === 2 && (
 									<div className="absolute bottom-0 bg-black border-[#808080b3] border-2 z-20 p-1 flex w-[90%] sm:w-[70%] xl:w-[55%] xl:py-3 items-center rounded-2xl left-[50%] -translate-x-[50%]">
 										<div className="w-[100px] h-[80px] overflow-hidden z-10 relative">
-											<Image src="/images/boxshot.png" fill alt="" className="object-contain" />
+											<Image src="/images/boxshot.png" fill alt="" className="object-contain" priority />
 										</div>
 										<div className="text-white flex-1">
 											<p className="font-bold">Stranger Things</p>

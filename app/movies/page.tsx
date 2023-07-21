@@ -10,6 +10,7 @@ function Movies() {
 	const session = useSession();
 	const { data: movieList, isLoading } = useMovieList();
 	const { data: favoriteMovies } = useFavorites(session.data?.user?.email!);
+
 	return (
 		<div className="relative">
 			<div className="absolute z-10 w-full px-[32px] md:px-16 ">

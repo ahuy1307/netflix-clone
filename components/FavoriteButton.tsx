@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import { useMemo } from "react";
 import toast from "react-hot-toast";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { twMerge } from "tailwind-merge";
 
 function FavoriteButton({ id }: { id: string }) {
 	const session = useSession();
@@ -39,11 +40,11 @@ function FavoriteButton({ id }: { id: string }) {
 	};
 
 	return (
-		<div onClick={toggleFavorite}>
+		<div onClick={toggleFavorite} className={twMerge(`py-1 md:py-2 px-2 md:px-4 rounded-full`, isFavorite ? `bg-zinc-800` : `bg-white`)}>
 			{isFavorite ? (
-				<AiFillHeart size={25} className="cursor-pointer hover:opacity-80 hover:scale-110" />
+				<AiFillHeart className="w-4 h-6 md:w-6 md:h-6 lg:w-6 lg:h-8 cursor-pointer hover:opacity-80 hover:scale-110" color={isFavorite ? "white" : "#27272a"} />
 			) : (
-				<AiOutlineHeart size={25} className="cursor-pointer hover:opacity-80 hover:scale-110" />
+				<AiOutlineHeart className="w-4 h-6 md:w-6 md:h-6 lg:w-6 lg:h-8 cursor-pointer hover:opacity-80 hover:scale-110" color={isFavorite ? "white" : "#27272a"} />
 			)}
 		</div>
 	);

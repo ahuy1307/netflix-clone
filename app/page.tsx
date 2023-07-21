@@ -15,7 +15,7 @@ export default function Home() {
 		<>
 			<div className="md:px-[48px] px-[24px] h-full overflow-hidden relative">
 				<div className="absolute overflow-hidden top-0 left-0 w-full h-full -z-[8]">
-					<Image className="w-full aspect-square object-cover -z-[11]" src="/images/background.jpg" fill alt="" />
+					<Image className="w-full aspect-square object-cover -z-[11]" src="/images/background.jpg" fill alt="" priority />
 					<div className="background-logo"></div>
 				</div>
 				<Navbar />
