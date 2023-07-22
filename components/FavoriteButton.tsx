@@ -28,11 +28,11 @@ function FavoriteButton({ id }: { id: string }) {
 				const res = await axios.post(`api/favorite/${session.data?.user?.email}`, {
 					id,
 				});
-				res.status === 200 && toast.success(res.statusText);
+				res.status === 200 && toast.success("Favorite movie successfully!");
 			} else {
 				const res = await axios.delete(`api/favorite/${session.data?.user?.email}?id=${id}`);
 
-				res.status === 200 && toast.success(res.statusText);
+				res.status === 200 && toast.success("Remove favorite movie successfully!");
 			}
 
 			mutate();
