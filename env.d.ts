@@ -7,5 +7,7 @@ namespace NodeJS {
 		GITHUB_SECRET: string;
 		NEXTAUTH_URL: string;
 		NEXTAUTH_SECRET: string;
+		FACEBOOK_ID: string;
+		FACEBOOK_SECRET: string;
 	}
 }

@@ -4,7 +4,7 @@ import Input from "@/components/Input";
 import Logo from "@/components/Logo";
 import Image from "next/image";
 import { FcGoogle } from "react-icons/fc";
-import { BsGithub } from "react-icons/bs";
+import { BsGithub, BsFacebook } from "react-icons/bs";
 import Link from "next/link";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import React, { useEffect, useState } from "react";
@@ -86,6 +86,7 @@ const Login = () => {
 				<div className="flex justify-center gap-x-8 mt-8 md:mt-10">
 					<FcGoogle className="w-14 h-14 cursor-pointer" onClick={() => signIn("google", { callbackUrl: "/" })} />
 					<BsGithub className="w-14 h-14 cursor-pointer" onClick={() => signIn("github", { callbackUrl: "/" })} />
+					<BsFacebook className="w-14 h-14 cursor-pointer" onClick={() => signIn("facebook", { callbackUrl: "/" })} />
 				</div>
 				<p className="text-[#737373] text-lg text-right mt-10 md:mt-14">
 					New to Netflix?{" "}

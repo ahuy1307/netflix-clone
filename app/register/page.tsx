@@ -30,7 +30,7 @@ function Register() {
 			const res = await axios.post("/api/register", {
 				...values,
 			});
-			res.status === 200 && toast.success(res.statusText) && reset();
+			res.status === 200 && toast.success("Register successfully!") && reset();
 			setIsLoading(false);
 		} catch (error) {
 			setIsLoading(false);
