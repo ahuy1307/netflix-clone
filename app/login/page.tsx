@@ -7,8 +7,8 @@ import { FcGoogle } from "react-icons/fc";
 import { BsGithub } from "react-icons/bs";
 import Link from "next/link";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import React, { useCallback, useEffect, useState } from "react";
-import { useSession, signIn } from "next-auth/react";
+import React, { useEffect, useState } from "react";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
@@ -16,6 +16,11 @@ const Login = () => {
 	const [showPass, setShowPass] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const router = useRouter();
+	const [isClient, setIsClient] = useState(false);
+
+	useEffect(() => {
+		setIsClient(true);
+	}, []);
 
 	const [form, setForm] = useState({
 		email: "",
@@ -45,12 +50,14 @@ const Login = () => {
 		if (!res?.error) return router.push("/");
 	};
 
+	if (!isClient) return null;
+
 	return (
 		<div className="overflow-hidden h-[100vh] relative bg-black md:bg-transparent">
 			<div className="relative md:h-full overflow-hidden top-0 left-0 w-full bg-black md:bg-transparent">
-				<Link href="/" className="block p-6">
+				<div className="p-6">
 					<Logo />
-				</Link>
+				</div>
 				<Image className="hidden md:flex w-full h-full aspect-square object-cover -z-[11]" src="/images/background.jpg" fill alt="" />
 				<div className="background-logo"></div>
 			</div>

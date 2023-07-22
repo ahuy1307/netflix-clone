@@ -41,9 +41,9 @@ function Register() {
 	return (
 		<div className="overflow-hidden h-[100vh] relative bg-black md:bg-transparent">
 			<div className="relative md:h-full overflow-hidden top-0 left-0 w-full bg-black md:bg-transparent">
-				<Link href="/" className="block p-6">
+				<div className="block p-6">
 					<Logo />
-				</Link>
+				</div>
 				<Image className="hidden md:flex w-full h-full aspect-square object-cover -z-[11]" src="/images/background.jpg" fill alt="" />
 				<div className="background-logo"></div>
 			</div>
@@ -59,6 +59,7 @@ function Register() {
 						className="text-xl bg-[#333333] outline-none border-none rounded-lg mb-6"
 						title="Password"
 						{...register("password")}
+						autoComplete="on"
 						required
 					/>
 					{showPass ? (

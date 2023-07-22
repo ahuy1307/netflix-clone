@@ -21,6 +21,8 @@ function FavoriteButton({ id }: { id: string }) {
 	}, [session, data]);
 
 	const toggleFavorite = async () => {
+		if (!session.data?.user) return toast.error("Login to favorite movie");
+
 		try {
 			if (!isFavorite) {
 				const res = await axios.post(`api/favorite/${session.data?.user?.email}`, {

@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import ToasterProvider from "@/context/ToastProvider";
 import SessionContext from "@/context/SessionContext";
-import ModalProvider from "@/context/ModalProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
