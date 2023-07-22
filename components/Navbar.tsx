@@ -11,8 +11,8 @@ import { useSession } from "next-auth/react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { IoNotificationsOutline } from "react-icons/io5";
-import Tippy from "@tippyjs/react";
-import "tippy.js/dist/tippy.css"; // optional
+// import Tippy from "@tippyjs/react";
+// import "tippy.js/dist/tippy.css"; // optional
 
 function Navbar() {
 	const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -53,16 +53,12 @@ function Navbar() {
 				</div>
 			</div>
 			<div className="flex items-center gap-x-4 cursor-pointer md:gap-x-6">
-				<Tippy content={<span>Search</span>} delay={[200, 200]}>
-					<button>
-						<HiMagnifyingGlass className="text-white w-5 h-10 md:w-6 lg:h-12 lg:w-8" />
-					</button>
-				</Tippy>
-				<Tippy content={<span>Notifications</span>} delay={[200, 200]}>
-					<button>
-						<IoNotificationsOutline className="text-white w-5 h-10 md:w-6 lg:h-12 lg:w-8" />
-					</button>
-				</Tippy>
+				<button>
+					<HiMagnifyingGlass className="text-white w-5 h-10 md:w-6 lg:h-12 lg:w-8" />
+				</button>
+				<button>
+					<IoNotificationsOutline className="text-white w-5 h-10 md:w-6 lg:h-12 lg:w-8" />
+				</button>
 				{session.status == "unauthenticated" ? (
 					<Link href="/login">
 						<Button>Login</Button>
