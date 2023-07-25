@@ -8,6 +8,7 @@ import { useSession } from "next-auth/react";
 function Movies() {
 	const session = useSession();
 	const { data: movieList, isLoading } = useMovieList();
+	console.log(movieList);
 
 	return (
 		<div className="relative">

@@ -19,7 +19,7 @@ function InfoModal({ data }: { data: Movie }) {
 			<div className="relative">
 				<video poster={data?.thumbnailUrl} autoPlay muted loop src={data?.videoUrl} className="w-full brightness-[60%] object-cover h-full" />
 				<div className="absolute bottom-[10%] left-10">
-					<p className="text-white text-xl md:text-4xl h-full lg:text-5xl font-bold md:mb-8 mb-2">Test</p>
+					<p className="text-white text-xl md:text-4xl h-full lg:text-5xl font-bold md:mb-8 mb-2">{data?.title}</p>
 					<div className="flex flex-row gap-4 items-center">
 						<PlayButton id={data?.id} />
 						<FavoriteButton id={data?.id} />
