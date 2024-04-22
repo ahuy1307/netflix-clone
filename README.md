@@ -1,4 +1,4 @@
-# Comic Clone
+# Netflix Clone
 
 Free comics website using Next + Tailwind + Prisma (MongoDB) + NextAuth
 
